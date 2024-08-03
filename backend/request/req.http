@@ -1,0 +1,17 @@
+@baseURL = http://localhost:3000/api
+
+GET {{baseURL}}/members
+###
+GET {{baseURL}}/books
+###
+
+POST {{baseURL}}/borrows
+Content-Type : application/json
+
+{
+    "memberId" : "",
+    "bookId" : ""
+}
+
+###
+POST {{baseURL}}/borrows/66ad8d0b8eb91f6fd39f1070/return
