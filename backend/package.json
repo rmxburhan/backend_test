@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index.ts",
-    "start": "cross-env NODE_ENV=production npx tsc src/index.ts && node dist/",
-    "test": "cross-env NODE_ENV=test npx ts-node --test",
+    "start": "cross-env NODE_ENV=production npx tsc && node dist/src",
+    "test": "cross-env NODE_ENV=test npx ts-node test",
     "seed": "npx ts-node src/persistence/seeder.ts"
   },
   "dependencies": {
