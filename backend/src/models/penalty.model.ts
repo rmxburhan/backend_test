@@ -3,7 +3,6 @@ import { Schema, Types, model } from "mongoose";
 
 export interface IPenalty extends Document {
   borrow: Types.ObjectId;
-  log: string;
   startDate: Date;
   endDate: Date;
   inPenalty: boolean;

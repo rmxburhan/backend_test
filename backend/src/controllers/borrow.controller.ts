@@ -14,7 +14,7 @@ export const postBorrow = async (
 
     const borrow = await borrowService.borrowBook(bookId, memberId);
 
-    return res.status(201).json({
+    return res.status(200).json({
       message: "Borrow has been saved.",
       data: borrow,
     });
@@ -34,7 +34,7 @@ export const postReturn = async (
 
     const borrow = await borrowService.returnBook(id);
 
-    return res.status(201).json({
+    return res.status(200).json({
       message: "Book has been returned.",
       data: borrow,
     });
