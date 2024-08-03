@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Library API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/members:
+    get:
+      summary: Get all members
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/memberSchema'
+        '500':
+          description: Internal server error
+  /api/books:
+    get:
+      summary: Get all books
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/bookSchema'
+        '500':
+          description: Internal server error
+  /api/borrows:
+    post:
+      summary: Borrow a book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                memberId:
+                  type: string
+                bookId:
+                  type: string
+      responses:
+        '200':
+          description: Borrow successful
+        '500':
+          description: Internal server error
+  /api/borrows/{id}/return:
+    post:
+      summary: Return a borrowed book
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Return successful
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    memberSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        code:
+          type: string
+        borrowedBooks:
+          type: array
+          items:
+            type: string
+    bookSchema:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        title:
+          type: string
+        author:
+          type: string
+        available:
+          type: integer
